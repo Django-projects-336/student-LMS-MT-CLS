@@ -2,9 +2,9 @@
 <h1 class="text-center mt-3 mb-3">Add Student</h1>
 
 <div class="container">
-  <form action="">
+  <form action="" method="POST">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Add Student</button>
   </form>
 </div>
 {% endblock content %}

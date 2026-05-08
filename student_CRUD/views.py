@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from .models import StudentDetail
 from .forms import StudentForm
 
@@ -13,8 +13,15 @@ def homepage(request) :
         return render(request, "homepage.html" , context)
 
 def add_student(request) :
+        if request.method == "POST" :
+                form = StudentForm(request.POST)
+                if form.is_valid() :
+                        form.save()
+                        return redirect("homepage")
+        
         form = StudentForm()
         context = {
                 "form" : form
         }
-        return render(request, "add_student.html" , context)
+        return render(request, "add_student.html", context)
+
