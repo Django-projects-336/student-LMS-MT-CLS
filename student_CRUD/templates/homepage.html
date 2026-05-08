@@ -22,7 +22,7 @@
         <td>{{student.course}}</td>
         <td>{{student.enrollment_date}}</td>
         <td>
-          <a href="#" class="btn btn-primary" tabindex="-1" role="button">View</a>
+          <a href=" {% url 'details' student.id  %} " class="btn btn-primary" tabindex="-1" role="button">View</a>
           <a href="#" class="btn btn-success" tabindex="-1" role="button">Update</a>
           <a href="#" class="btn btn-danger" tabindex="-1" role="button">Delete</a>
         </td>
