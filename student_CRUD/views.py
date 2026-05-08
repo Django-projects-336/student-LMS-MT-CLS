@@ -27,9 +27,16 @@ def add_student(request) :
         return render(request, "add_student.html", context)
 
 def details(request, id) :
-      student = get_object_or_404(StudentDetail,pk=id)
-      form = StudentForm(instance=student)
-      context = {
+        if request.method == "POST" :
+                student = get_object_or_404(StudentDetail, pk=id)
+                form = StudentForm(request.POST, instance=student)
+                if form.is_valid() :
+                        form.save()
+                        return redirect("homepage")
+        
+        student = get_object_or_404(StudentDetail,pk=id)
+        form = StudentForm(instance=student)
+        context = {
               "form" : form
       }
-      return render(request, "view_details.html", context)
+        return render(request, "view_details.html", context)
