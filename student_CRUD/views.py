@@ -1,4 +1,5 @@
 from django.shortcuts import render , redirect
+from django.http import HttpResponse 
 from .models import StudentDetail
 from .forms import StudentForm
 
@@ -25,3 +26,6 @@ def add_student(request) :
         }
         return render(request, "add_student.html", context)
 
+def details(request, id) :
+        given_id = f"selected id = {id}"
+        return HttpResponse(given_id)
