@@ -40,3 +40,8 @@ def details(request, id) :
               "form" : form
       }
         return render(request, "view_details.html", context)
+
+def delete_student(request, id) :
+        student = get_object_or_404(StudentDetail, pk=id)
+        student.delete()
+        return redirect("homepage")
