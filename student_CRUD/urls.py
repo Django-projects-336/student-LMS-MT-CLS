@@ -8,5 +8,6 @@ urlpatterns = [
     path("", views.homepage, name="homepage"), 
     path("add-student/", views.add_student, name="add-student"), 
     path("details/<int:id>/", views.details, name="details"),
-    path("api/students/" , views.StudentListCreateAPI.as_view() ,name = "Student-list-create-API" )
+    path("api/students/" , views.StudentListCreateAPI.as_view() ,name = "Student-list-create-API" ),
+    path("api/students/<int:pk>" , views.StudentRetriveUpdateDestroyAPI.as_view() ,name = "Student-retrive-update-destroy-API" )
 ]

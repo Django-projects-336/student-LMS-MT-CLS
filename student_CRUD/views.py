@@ -66,3 +66,14 @@ class StudentListCreateAPI(APIView) :
                                         status=status.HTTP_201_CREATED)
                 return Response(serializer.errors , 
                                 status=status.HTTP_400_BAD_REQUEST)
+
+class StudentRetriveUpdateDestroyAPI(APIView) :
+        def patch(self , request , pk):
+                student = get_object_or_404(StudentDetail, pk=pk)
+                serializer = StudentSerializer(student , data=request.data , partial=True)
+                if serializer.is_valid() :
+                        serializer.save()
+                        return Response(serializer.data , 
+                                        status=status.HTTP_200_OK)
+                return Response(serializer.errors , 
+                                status=status.HTTP_400_BAD_REQUEST)
